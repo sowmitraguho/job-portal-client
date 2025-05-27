@@ -1,11 +1,38 @@
-import React from 'react';
+import React, { use } from 'react';
 import { NavLink } from 'react-router';
+import { AuthContext } from '../../../Contexts/Firebase/AuthContext';
 
 const Navbar = () => {
 
+    const { user, loading, logOut } = use(AuthContext);
+
+    if (loading) {
+        return <><span className="loading loading-spinner text-primary"></span>
+            <span className="loading loading-spinner text-secondary"></span>
+            <span className="loading loading-spinner text-accent"></span>
+            <span className="loading loading-spinner text-neutral"></span>
+            <span className="loading loading-spinner text-info"></span>
+            <span className="loading loading-spinner text-success"></span>
+            <span className="loading loading-spinner text-warning"></span>
+            <span className="loading loading-spinner text-error"></span></>
+    }
+
+    const signOut = () => {
+        logOut()
+            .then(() => {
+                // Sign-out successful.
+                console.log('SignOut Successfully!!');
+               
+            }).catch((error) => {
+                // An error happened.
+                console.log(error);
+            });
+    }
+
+
     const Links = <>
         <li><NavLink to="/">Home</NavLink></li>
-        
+
     </>
 
 
@@ -31,7 +58,10 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <NavLink to="/register" className="btn">Register</NavLink>
+                    {
+                        user ? <button onClick={signOut} className='btn' >LogOut</button> : <><NavLink to="/register" className="btn">Register</NavLink>
+                            <NavLink to="/signin" className="btn">SignIn</NavLink></>
+                    }
                 </div>
             </div>
         </div>
