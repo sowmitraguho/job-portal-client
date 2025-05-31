@@ -13,19 +13,19 @@ const Banner = () => {
                     <div className='flex-1'>
                         <motion.img animate={
                             {
-                                y: [50, 0, 50],
-                                transition: { duration: 5, repeat: Infinity }
+                                y: [150, 0, 150],
+                                transition: { duration: 15, repeat: Infinity }
                             }}
                             src={image1}
                             className="max-w-sm rounded-tr-3xl rounded-tl-3xl rounded-br-3xl shadow-2xl border-l-8 border-b-8 border-sky-500 mb-24"
                         />
                         <motion.img animate={
                             {
-                                x: [150, 100, 150],
-                                transition: { duration: 5, repeat: Infinity }
+                                x: [150, 50, 150],
+                                transition: { duration: 15, repeat: Infinity }
                             }}
                             src={image2}
-                            className="max-w-3xs rounded-tr-3xl rounded-tl-3xl rounded-br-3xl shadow-2xl border-l-8 border-b-8 border-sky-500"
+                            className="max-w-sm rounded-tr-3xl rounded-tl-3xl rounded-br-3xl shadow-2xl border-l-8 border-b-8 border-sky-500"
                         />
                     </div>
                     <div className='flex-1'>
